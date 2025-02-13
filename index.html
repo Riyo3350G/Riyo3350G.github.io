@@ -70,13 +70,17 @@
         event.preventDefault();
         var url = event.target.href;
 
+        // Check if Unity WebView exists
         if (window.Unity) {
             window.Unity.call(url);  // Send URL to Unity WebView
+        } else if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.UNITY_WEBVIEW) {
+            window.webkit.messageHandlers.UNITY_WEBVIEW.postMessage(url);  // For iOS support
         } else {
             window.open(url, "_blank");  // Open in a new tab as a fallback
         }
     }
 </script>
+
 
 
 
