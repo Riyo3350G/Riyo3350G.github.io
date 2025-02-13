@@ -70,13 +70,15 @@
         event.preventDefault();
         var url = event.target.href;
 
-        // DEBUG: Print to console to check if function is working
-        console.log("Trying to open: " + url);
-
-        // Send message to Unity WebView
-        window.location.href = 'unity:' + encodeURIComponent(url);
+        if (window.Unity) {
+            window.Unity.call(url);  // Send URL to Unity WebView
+        } else {
+            window.open(url, "_blank");  // Open in a new tab as a fallback
+        }
     }
 </script>
+
+
 
 </head>
 <body>
