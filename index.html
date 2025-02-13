@@ -66,12 +66,18 @@
         }
     </style>
     <script>
-        function openInExternalBrowser(event) {
-            event.preventDefault();
-            var url = event.target.href;
-            window.location.href = 'unity:' + encodeURIComponent(url);
-        }
-    </script>
+    function openInExternalBrowser(event) {
+        event.preventDefault();
+        var url = event.target.href;
+
+        // DEBUG: Print to console to check if function is working
+        console.log("Trying to open: " + url);
+
+        // Send message to Unity WebView
+        window.location.href = 'unity:' + encodeURIComponent(url);
+    }
+</script>
+
 </head>
 <body>
     <h1>More Games</h1>
