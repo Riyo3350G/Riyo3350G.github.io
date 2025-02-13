@@ -1,350 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Bug Tracker - Software Landing Page</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Games</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
 
-    <!-- animate css -->
-    <link rel="stylesheet" href="css/animate.min.css" />
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <!-- font-awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <!-- google font -->
-    <link
-      href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700,800"
-      rel="stylesheet"
-      type="text/css"
-    />
+        h1 {
+            color: #007bff;
+        }
 
-    <!-- custom css -->
-    <link rel="stylesheet" href="css/templatemo-style.css" />
-  </head>
+        .game-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
 
-  <body>
-    <!-- start preloader -->
-    <div class="preloader">
-      <div class="sk-spinner sk-spinner-rotating-plane"></div>
+        .game-card {
+            background: white;
+            padding: 15px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .game-card:hover {
+            transform: scale(1.05);
+        }
+
+        .game-image {
+            width: 100%;
+            height: 180px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .game-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .play-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .play-button:hover {
+            background: #218838;
+        }
+    </style>
+    <script>
+        function openInExternalBrowser(event) {
+            event.preventDefault();
+            var url = event.target.href;
+            window.location.href = 'unity:' + encodeURIComponent(url);
+        }
+    </script>
+</head>
+<body>
+    <h1>More Games</h1>
+    <p>Check out our latest games!</p>
+
+    <div class="game-container">
+        <!-- Game 1 -->
+        <div class="game-card">
+            <img class="game-image" src="https://source.unsplash.com/300x180/?game" alt="Game 1">
+            <div class="game-title">🔥 Game 1</div>
+            <a href="https://play.google.com/store/apps/details?id=com.yourgame1" 
+               onclick="openInExternalBrowser(event)" 
+               class="play-button">Play Now</a>
+        </div>
+
+        <!-- Game 2 -->
+        <div class="game-card">
+            <img class="game-image" src="https://source.unsplash.com/300x180/?arcade" alt="Game 2">
+            <div class="game-title">🚀 Game 2</div>
+            <a href="https://apps.apple.com/us/app/yourgame2/id1234567890" 
+               onclick="openInExternalBrowser(event)" 
+               class="play-button">Play Now</a>
+        </div>
+
+        <!-- Game 3 -->
+        <div class="game-card">
+            <img class="game-image" src="https://source.unsplash.com/300x180/?racing" alt="Game 3">
+            <div class="game-title">🎮 Game 3</div>
+            <a href="https://play.google.com/store/apps/details?id=com.yourgame3" 
+               onclick="openInExternalBrowser(event)" 
+               class="play-button">Play Now</a>
+        </div>
     </div>
-    <!-- end preloader -->
-    <!-- start navigation -->
-    <nav
-      class="navbar navbar-default navbar-fixed-top templatemo-nav"
-      role="navigation"
-    >
-      <div class="container">
-        <div class="navbar-header">
-          <button
-            class="navbar-toggle"
-            data-toggle="collapse"
-            data-target=".navbar-collapse"
-          >
-            <span class="icon icon-bar"></span>
-            <span class="icon icon-bar"></span>
-            <span class="icon icon-bar"></span>
-          </button>
-          <a href="#" class="navbar-brand">Oasis</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right text-uppercase">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#feature">Features</a></li>
-            <li><a href="#download">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- end navigation -->
-    <!-- start home -->
-    <section id="home">
-      <div class="overlay">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 wow fadeIn" data-wow-delay="0.3s">
-              <h1 class="text-upper">Oasis</h1>
-              <p class="tm-white" style="font-size: large">
-                Oasis unites tasks, team members, and tools in one central hub,
-                ensuring everything stays organized, even when your team is
-                scattered.
-              </p>
-              <img
-                src="images/software-img.png"
-                class="img-responsive"
-                alt="home img"
-              />
-            </div>
-            <div class="col-md-1"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- end home -->
-    <!-- start divider -->
-    <!-- <section id="divider">
-      <div class="container">
-        <div class="row">
-          <div
-            class="col-md-4 wow fadeInUp templatemo-box"
-            data-wow-delay="0.3s"
-          >
-            <i class="fa fa-laptop"></i>
-            <h3 class="text-uppercase">RESPONSIVE LAYOUT</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation.
-            </p>
-          </div>
-          <div
-            class="col-md-4 wow fadeInUp templatemo-box"
-            data-wow-delay="0.3s"
-          >
-            <i class="fa fa-twitter"></i>
-            <h3 class="text-uppercase">BOOTSTRAP 3.3.4</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation.
-            </p>
-          </div>
-          <div
-            class="col-md-4 wow fadeInUp templatemo-box"
-            data-wow-delay="0.3s"
-          >
-            <i class="fa fa-font"></i>
-            <h3 class="text-uppercase">GOOGLE FONT</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <!-- end divider -->
-
-    <!-- start feature -->
-    <section id="feature">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 wow fadeInLeft" data-wow-delay="0.6s">
-            <h2 class="text-uppercase">Boards for Every Project</h2>
-            <p>
-              Create dedicated boards for each project, providing a visual
-              overview of tasks and progress. Oasis's boards act as a dynamic
-              canvas, allowing you to customize and adapt them to suit the
-              unique needs of your projects.
-            </p>
-          </div>
-          <div class="col-md-6 wow fadeInRight" data-wow-delay="0.6s">
-            <img
-              src="images/project_boards.png"
-              class="img-responsive"
-              alt="feature img"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- end feature -->
-
-    <!-- start feature1 -->
-    <section id="feature1">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-            <img
-              src="images/Tickets_card.png"
-              class="img-responsive"
-              alt="feature img"
-            />
-          </div>
-          <div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-            <h2 class="text-uppercase">Cards for Detailed Tasks</h2>
-            <p>
-              Break down tasks into actionable items with Oasis cards. Add due
-              dates, checklists, attachments, and labels to provide detailed
-              information and keep everyone on the same page.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- end feature1 -->
-
-    <!-- start feature2 -->
-    <section id="feature2">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 wow fadeInLeft" data-wow-delay="0.6s">
-            <h2 class="text-uppercase">Activity Feed for Updates</h2>
-            <p>
-              Keep track of changes and updates across boards with the activity
-              feed. Stay informed about who made changes, moved tasks, fostering
-              transparency and accountability.
-            </p>
-          </div>
-          <div class="col-md-6 wow fadeInRight" data-wow-delay="0.6s">
-            <img
-              src="images/assigned_tickets.png"
-              class="img-responsive"
-              alt="feature img"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- start download -->
-    <section id="download">
-      <div class="container">
-        <div class="row" style="text-align: center">
-          <h2 class="text-uppercase">About</h2>
-          <p>
-            One day, while navigating the complexities of modern life, I found
-            myself longing for a solution that seamlessly integrated various
-            aspects of my daily routines. Inspired by the challenges I faced, I
-            embarked on a journey to create a project that would not only
-            simplify my life but also contribute value to others facing similar
-            struggles.
-          </p>
-          <p>
-            The idea took root, and I began outlining the features that would
-            make this project truly impactful. Over the course of several weeks,
-            fueled by passion and a desire to innovate, the project evolved from
-            a mere concept into a functional application that I am proud to
-            present today.
-          </p>
-          <p>
-            This project is a culmination of countless hours of brainstorming,
-            coding, and refining. It reflects my commitment to addressing
-            real-world problems and leveraging technology to enhance our daily
-            experiences.
-          </p>
-          <p>
-            As part of my journey at Holberton School, I am thrilled to showcase
-            this project as a Portfolio Project. It not only demonstrates my
-            technical skills but also embodies my dedication to creating
-            solutions that matter.
-          </p>
-          <p>
-            Feel free to explore the project and its features. I hope it
-            resonates with you as much as it does with me.
-          </p>
-          <button
-            class="btn btn-primary text-uppercase"
-            style="margin-right: 5%"
-          >
-            Link to The App
-          </button>
-          <a href="https://github.com/Ussf-nassrallah/BugTracker">
-            <button
-              class="btn btn-primary text-uppercase"
-              style="margin-left: 5%"
-            >
-              Link to The Repo
-            </button>
-          </a>
-        </div>
-      </div>
-    </section>
-    <!-- end download -->
-
-    <!-- start contact -->
-    <section id="contact">
-      <div class="overlay">
-        <div class="container">
-          <div class="row">
-            <div data-wow-delay="0.6s">
-              <h2 class="text-uppercase">Contact Us</h2>
-              <address>
-                <h4>Redwan Ben Yechou</h4>
-                <p>
-                  <i class="fa fa-linkedin"></i>
-                  <a
-                    href="https://www.linkedin.com/in/redwan-ben-yechou/"
-                    style="color: white; font-weight: bold"
-                  >
-                    LinkedIn
-                  </a>
-                </p>
-                <p>
-                  <i class="fa fa-github"></i>
-                  <a
-                    href="https://github.com/Riyo3350G"
-                    style="color: white; font-weight: bold"
-                  >
-                    GitHub
-                  </a>
-                </p>
-                <p>
-                  <i class="fa fa-twitter"></i>
-                  <a
-                    href="https://twitter.com/Rben_Yechou"
-                    style="color: white; font-weight: bold"
-                  >
-                    Twitter
-                  </a>
-                </p>
-              </address>
-              <address>
-                <h4>Youssef Nassrallah</h4>
-                <p>
-                  <i class="fa fa-linkedin"></i>
-                  <a
-                    href="https://www.linkedin.com/in/ussf-nassrallah/"
-                    style="color: white; font-weight: bold"
-                  >
-                    LinkedIn
-                  </a>
-                </p>
-                <p>
-                  <i class="fa fa-github"></i>
-                  <a
-                    href="https://github.com/Ussf-nassrallah"
-                    style="color: white; font-weight: bold"
-                  >
-                    GitHub
-                  </a>
-                </p>
-                <p>
-                  <i class="fa fa-twitter"></i>
-                  <a
-                    href="https://twitter.com/UssfNassrallah"
-                    style="color: white; font-weight: bold"
-                  >
-                    Twitter
-                  </a>
-                </p>
-              </address>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- end contact -->
-
-    <!-- start footer -->
-    <footer>
-      <div class="container">
-        <div class="row">
-          <p>Copyright © 2023 Oasis</p>
-        </div>
-      </div>
-    </footer>
-    <!-- end footer -->
-
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/jquery.singlePageNav.min.js"></script>
-    <script src="js/custom.js"></script>
-  </body>
+</body>
 </html>
