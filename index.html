@@ -92,7 +92,7 @@
         }
 
     </style>
-    <script>
+<!--     <script>
         function openInExternalBrowser(event) {
             event.preventDefault();
             var url = event.target.href;
@@ -106,7 +106,35 @@
                 window.open(url, "_blank");  // Open in a new tab as a fallback
             }
         }
-    </script>
+    </script> -->
+    <script>
+    function openInExternalBrowser(event) {
+        event.preventDefault();  // Prevent default navigation
+        var url = event.target.href;
+
+        // ✅ Send Tracking Data to Flask
+        fetch("http://your-flask-server-ip:5000/log_event", {  // Replace with your Flask server IP
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                event_name: "external_link_click",
+                event_params: { "url": url }
+            })
+        })
+        .then(response => response.json())
+        .then(data => console.log("📊 Tracked in Flask: ", data))
+        .catch(error => console.error("❌ Tracking Error: ", error));
+
+        // ✅ Send URL to Unity WebView
+        if (window.Unity) {
+                window.Unity.call(url);  // Send URL to Unity WebView
+            } else if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.UNITY_WEBVIEW) {
+                window.webkit.messageHandlers.UNITY_WEBVIEW.postMessage(url);  // For iOS support
+            } else {
+                window.open(url, "_blank");  // Open in a new tab as a fallback
+            }
+    }
+</script>
 </head>
 <body>
     <h1>More Games</h1>
