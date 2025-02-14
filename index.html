@@ -99,7 +99,7 @@
         var gameTitle = event.target.closest('.game-card').querySelector('.game-title').innerText;
 
         // ✅ Send Tracking Data to Flask
-        fetch("http://192.168.11.105:5000/log_event", {
+        fetch("http://196.119.41.94:5000/log_event", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
