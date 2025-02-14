@@ -38,7 +38,7 @@
             transform: scale(1.05);
         }
 
-        .game-image {
+        .game-video {
             width: 100%;
             height: 180px;
             border-radius: 8px;
@@ -66,24 +66,20 @@
         }
     </style>
     <script>
-    function openInExternalBrowser(event) {
-        event.preventDefault();
-        var url = event.target.href;
+        function openInExternalBrowser(event) {
+            event.preventDefault();
+            var url = event.target.href;
 
-        // Check if Unity WebView exists
-        if (window.Unity) {
-            window.Unity.call(url);  // Send URL to Unity WebView
-        } else if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.UNITY_WEBVIEW) {
-            window.webkit.messageHandlers.UNITY_WEBVIEW.postMessage(url);  // For iOS support
-        } else {
-            window.open(url, "_blank");  // Open in a new tab as a fallback
+            // Check if Unity WebView exists
+            if (window.Unity) {
+                window.Unity.call(url);  // Send URL to Unity WebView
+            } else if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.UNITY_WEBVIEW) {
+                window.webkit.messageHandlers.UNITY_WEBVIEW.postMessage(url);  // For iOS support
+            } else {
+                window.open(url, "_blank");  // Open in a new tab as a fallback
+            }
         }
-    }
-</script>
-
-
-
-
+    </script>
 </head>
 <body>
     <h1>More Games</h1>
@@ -92,7 +88,10 @@
     <div class="game-container">
         <!-- Game 1 -->
         <div class="game-card">
-            <img class="game-image" src="https://com-amazon-mas-catalog.s3.amazonaws.com/amzn1.devportal.assetupload.05df9192d59c4684802e899eaf1edcf9_adb081c4-dc80-4e7f-99a6-c6885d2fe7ea_fde7cf8d8ac10992491b9191c86dbb51" alt="Game 1">
+            <video class="game-video" autoplay loop muted playsinline>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <div class="game-title">🔥 Game 1</div>
             <a href="https://play.google.com/store/apps/details?id=com.npixel.GranSagaGB" 
                onclick="openInExternalBrowser(event)" 
@@ -101,7 +100,10 @@
 
         <!-- Game 2 -->
         <div class="game-card">
-            <img class="game-image" src="https://com-amazon-mas-catalog.s3.amazonaws.com/amzn1.devportal.assetupload.05df9192d59c4684802e899eaf1edcf9_adb081c4-dc80-4e7f-99a6-c6885d2fe7ea_fde7cf8d8ac10992491b9191c86dbb51" alt="Game 2">
+            <video class="game-video" autoplay loop muted playsinline>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <div class="game-title">🚀 Game 2</div>
             <a href="https://play.google.com/store/apps/details?id=com.npixel.GranSagaGB" 
                onclick="openInExternalBrowser(event)" 
@@ -110,7 +112,10 @@
 
         <!-- Game 3 -->
         <div class="game-card">
-            <img class="game-image" src="https://com-amazon-mas-catalog.s3.amazonaws.com/amzn1.devportal.assetupload.05df9192d59c4684802e899eaf1edcf9_adb081c4-dc80-4e7f-99a6-c6885d2fe7ea_fde7cf8d8ac10992491b9191c86dbb51" alt="Game 3">
+            <video class="game-video" autoplay loop muted playsinline>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <div class="game-title">🎮 Game 3</div>
             <a href="amzn://apps/android?p=com.TheSurvivorIsland.BuildYourVillage" 
                onclick="openInExternalBrowser(event)" 
@@ -119,7 +124,10 @@
 
         <!-- Game 4 -->
         <div class="game-card">
-            <img class="game-image" src="https://com-amazon-mas-catalog.s3.amazonaws.com/amzn1.devportal.assetupload.05df9192d59c4684802e899eaf1edcf9_adb081c4-dc80-4e7f-99a6-c6885d2fe7ea_fde7cf8d8ac10992491b9191c86dbb51" alt="Game 3">
+            <video class="game-video" autoplay loop muted playsinline>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <div class="game-title">🎮 Game 4</div>
             <a href="https://play.google.com/store/apps/details?id=com.npixel.GranSagaGB" 
                onclick="openInExternalBrowser(event)" 
