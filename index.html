@@ -103,35 +103,43 @@
     <script>
         
     function openInExternalBrowser(event) {
-        event.preventDefault();
-        var url = event.target.href;
-        var gameTitle = event.target.closest('.game-card').querySelector('.game-title').innerText;
+    event.preventDefault();
+    var url = event.target.href;
+    var gameTitle = event.target.closest('.game-card').querySelector('.game-title').innerText;
 
-        // ✅ Send Tracking Data to Flask
-        fetch("http://196.119.41.94:5000/log_event", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                event_name: "game_click",
-                event_params: { "url": url },
-                game: gameTitle,
-                device: navigator.userAgent,
-                location: Intl.DateTimeFormat().resolvedOptions().timeZone
-            })
+    // ✅ Send Data to Flask
+    fetch("http://196.119.41.94:5000/log_event", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            event_name: "game_click",
+            event_params: { "url": url },
+            game: gameTitle,
+            device: navigator.userAgent,
+            location: Intl.DateTimeFormat().resolvedOptions().timeZone
         })
-        .then(response => response.json())
-        .then(data => console.log("📊 Tracked in Flask: ", data))
-        .catch(error => console.error("❌ Tracking Error: ", error));
+    })
+    .then(response => response.json())
+    .then(data => console.log("📊 Tracked in Flask: ", data))
+    .catch(error => console.error("❌ Tracking Error: ", error));
 
-        // ✅ Send URL to Unity WebView
-        if (window.Unity) {
-            window.Unity.call(url);  // Send URL to Unity WebView
-        } else if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.UNITY_WEBVIEW) {
-            window.webkit.messageHandlers.UNITY_WEBVIEW.postMessage(url);  // iOS support
-        } else {
-            window.open(url, "_blank");  // Open in new tab as fallback
-        }
+    // ✅ Send Click Event to Google Analytics
+    gtag('event', 'game_click', {
+        'event_category': 'Game',
+        'event_label': gameTitle,
+        'value': 1
+    });
+
+    // ✅ Send URL to Unity WebView
+    if (window.Unity) {
+        window.Unity.call(url);
+    } else if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.UNITY_WEBVIEW) {
+        window.webkit.messageHandlers.UNITY_WEBVIEW.postMessage(url);
+    } else {
+        window.open(url, "_blank");
     }
+}
+
 </script>
 
 </head>
