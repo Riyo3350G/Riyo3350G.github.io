@@ -104,8 +104,8 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 event_name: "game_click",
+                event_params: { "url": url },
                 game: gameTitle,
-                url: url,
                 device: navigator.userAgent,
                 location: Intl.DateTimeFormat().resolvedOptions().timeZone
             })
@@ -124,6 +124,7 @@
         }
     }
 </script>
+
 </head>
 <body>
     <h1>More Games</h1>
