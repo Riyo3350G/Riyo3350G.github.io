@@ -113,7 +113,7 @@
         var url = event.target.href;
 
         // ✅ Send Tracking Data to Flask
-        fetch("http://your-flask-server-ip:5000/log_event", {  // Replace with your Flask server IP
+        fetch("http://192.168.11.105:5000/log_event", {  // Replace with your Flask server IP
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
