@@ -126,10 +126,11 @@
     // ✅ Send Click Event to Google Analytics
     gtag('event', 'game_click', {
         'event_category': 'Game',
-        'event_label': gameTitle,
+        'event_action': 'click',
+        'event_label': gameTitle, // Send game name
+        'game_url': url, // Send game URL
         'value': 1
     });
-
     // ✅ Send URL to Unity WebView
     if (window.Unity) {
         window.Unity.call(url);
