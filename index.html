@@ -133,6 +133,15 @@
             var url = event.target.href;
             var gameTitle = event.target.closest('.game-card').querySelector('.game-title').innerText;
 
+            // ✅ Send Click Event to Google Analytics
+            gtag('event', 'game_click', {
+                'event_category': 'Game',
+                'event_action': 'click',
+                'event_label': gameTitle,
+                'game_url': url,
+                'value': 1
+            });
+
             if (window.Unity) {
                 window.Unity.call(url);
             } else if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.UNITY_WEBVIEW) {
