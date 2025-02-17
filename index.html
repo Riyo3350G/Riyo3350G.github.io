@@ -38,6 +38,20 @@
             color: #333;
         }
 
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: red;
+            color: white;
+            border: none;
+            font-size: 16px;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
         /* Scrollable Game List */
         .game-container {
             display: flex;
@@ -139,24 +153,11 @@
                 window.Unity.call("close_webview");
             }
         }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const videos = document.querySelectorAll(".game-video");
-            videos.forEach(video => {
-                video.addEventListener("mouseenter", () => {
-                    video.play();
-                    video.muted = false;
-                });
-                video.addEventListener("mouseleave", () => {
-                    video.pause();
-                    video.muted = true;
-                });
-            });
-        });
     </script>
 </head>
 <body>
     <div class="popup-container">
+        <button class="close-btn" onclick="closeWebView()">X</button>
         <h1>More Games</h1>
         <div class="game-container">
             <div class="game-card">
