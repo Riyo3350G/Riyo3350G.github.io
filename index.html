@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            background: rgba(0, 0, 0, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -71,20 +71,6 @@
             scrollbar-color: #ccc #f5f7fa;
         }
 
-        /* Custom Scrollbar */
-        .game-container::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .game-container::-webkit-scrollbar-track {
-            background: #f5f7fa;
-        }
-
-        .game-container::-webkit-scrollbar-thumb {
-            background: #aaa;
-            border-radius: 3px;
-        }
-
         /* Game Card */
         .game-card {
             background: linear-gradient(to bottom, #ffffff, #e3e8ff);
@@ -107,6 +93,7 @@
             height: 160px;
             border-radius: 8px;
             object-fit: cover;
+            cursor: pointer;
         }
 
         /* Play Button */
@@ -125,24 +112,6 @@
         .play-button:hover {
             background: #388E3C;
         }
-
-        /* Hand Indicator */
-        .hand-indicator {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 50px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/3/39/Pointing_hand_cursor_vector.svg') no-repeat center;
-            background-size: contain;
-            animation: moveHand 1.5s infinite alternate;
-        }
-
-        @keyframes moveHand {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(10px); }
-        }
     </style>
 
     <!-- Google Analytics -->
@@ -158,6 +127,7 @@
             var url = event.target.href;
             var gameTitle = event.target.closest('.game-card').querySelector('.game-title').innerText;
 
+            // ✅ Send Click Event to Google Analytics
             gtag('event', 'game_click', {
                 'event_category': 'Game',
                 'event_action': 'click',
@@ -174,6 +144,32 @@
                 window.open(url, "_blank");
             }
         }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const videos = document.querySelectorAll(".game-video");
+
+            videos.forEach(video => {
+                video.addEventListener("click", function() {
+                    // Pause all other videos
+                    videos.forEach(v => {
+                        if (v !== video) {
+                            v.pause();
+                            v.currentTime = 0; // Reset other videos to the start
+                        }
+                    });
+
+                    // Toggle play/pause for clicked video
+                    if (video.paused) {
+                        video.muted = false; // Unmute
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
+                });
+            });
+        });
 
         function closeWebView() {
             if (window.Unity) {
@@ -190,7 +186,7 @@
         <h1>More Games</h1>
         <div class="game-container">
             <div class="game-card">
-                <video class="game-video" autoplay loop muted playsinline>
+                <video class="game-video" playsinline>
                     <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
                 </video>
                 <div class="game-title">🔥 Game 1</div>
@@ -198,7 +194,7 @@
             </div>
 
             <div class="game-card">
-                <video class="game-video" autoplay loop muted playsinline>
+                <video class="game-video" playsinline>
                     <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
                 </video>
                 <div class="game-title">🚀 Game 2</div>
@@ -206,7 +202,7 @@
             </div>
 
             <div class="game-card">
-                <video class="game-video" autoplay loop muted playsinline>
+                <video class="game-video" playsinline>
                     <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
                 </video>
                 <div class="game-title">🎮 Game 3</div>
@@ -214,14 +210,13 @@
             </div>
 
             <div class="game-card">
-                <video class="game-video" autoplay loop muted playsinline>
+                <video class="game-video" playsinline>
                     <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
                 </video>
                 <div class="game-title">🎮 Game 4</div>
                 <a href="amzn://apps/android?p=com.TheSurvivorIsland.BuildYourVillage" onclick="openInExternalBrowser(event)" class="play-button">Play Now</a>
             </div>
         </div>
-        <div class="hand-indicator"></div>
     </div>
 </body>
 </html>
